@@ -1,38 +1,272 @@
-.App {
-  text-align: center;
+
+
+#coffe_shop{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#navbar, #navbar2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#navbar{
+  color: #4F5665;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+.bg{
+  background-image: url(../src/assets/assets1/bg-home.png);
+  height: 645px;
+  width: 100%;
+  background-repeat: no-repeat;
+  
+}
+
+#start{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 70px;
+}
+
+#start2{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+#btn2{
+  background: #FFBA33;
+  color: #6A4029;
+  ;
+}
+
+
+#box{
+  color: black;
+}
+
+#rect{
+  width: 85%;
+  margin-top: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+#rect span{
+  color: #4F5665;
+}
+
+#bg2{
+  background-color: #BCBABA;
+}
+
+#ckls1::after{
+  content: 'High quality beans';
+}
+
+#cklsimg{
+  width: 50px;
+}
+
+.box5{
+  height: 760px;
+}
+
+.btn5{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vector{
+  width: 75%;
+}
+
+#rect2{
+  width: 85%;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+
+#text9{
+  color: #4F5665;
+
+}
+
+.slider{
+  width: 100%;
+  overflow-x: scroll;
+}
+
+footer{
+  height: 548px;
+  position: relative;
+  bottom: 0px;
+}
+
+
+.footer{
+  height: 548px;
+}
+
+#rect2{
+  width: 85%;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  position: absolute;
+}
+
+.box2{
+  width: 28px; 
+  height: 400px;
+}
+
+.box3{
+  width: 28px; 
+  height: 338px;
+}
+
+.btn2{
+  width: 284px;
+  height: 75px;
+
+}
+
+.bg2{
+  background-image: url(../src/assets/assets8/bg.png);
+  width: 100%;
+  height: 1112px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text1{
+  font-size: 40px;
+}
+
+.box6{
+  width: 487px;
+  height: 737px;
+}
+
+.boxtotal{
+  width: 487px;
+}
+
+.box7{
+  width: 455px;
+  height: 199px;
+}
+
+.box8{
+  width: 454px;
+  height: 259px;
+}
+
+.btn{
+  width: 452px;
+  height: 84px;
+}
+
+.text2{
+  width: 188px;
+}
+
+.text3{
+  width: 188px;
+}
+
+.bg4{
+  background-image: url(../src/assets/assets9/bg.png);
+  width: 100%;
+  height: 1112px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.kanan{
+  text-align: right;
+  padding-right: 130px;
+  padding-top: 15px;
+  padding-bottom: 37px;
+}
+
+.box9{
+  width: 394px;
+  height: 126px;
+}
+
+.kanan{
+  text-align: right;
+  padding-right: 130px;
+  padding-top: 15px;
+  padding-bottom: 37px;
+}
+
+.cek{
+  padding-left: 270px;
+}
+
+
+.modal{
+  background: rgba(0, 0,0, 0.5);
+  position: absolute;
+  top: 0px;
+  height: 300%;
+  font-family: Poppins;
+}
+
+.modal-box{
+  width: 728px;
+  height: 356px;
+}
+
+.text-modal{
+  width: 505px;
+}
+
+#email, .btn-google{
+  width: 505px;
+  height: 75px;
+}
+
+#password {
+  width: 505px;
+  height: 75px;
+}
+
+.App2 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.box-detail{
+  width: 732px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.desc{
+  width: 639px;
+  height: 582px;
 }
