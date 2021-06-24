@@ -7,8 +7,26 @@ import google from '../assets/assets2/google.png'
 import fb from '../assets/assets1/fb.png'
 import tweet from '../assets/assets1/twit.png'
 import instagram from '../assets/assets1/ig.png'
+import { connect } from 'react-redux'
+import { authRegister } from '../redux/actions/auth'
 
-export default class SignUp extends Component {
+
+class SignUp extends Component {
+
+    state ={
+        email: '',
+        password:'',
+        number:''
+    }
+
+    onRegister = (e)=>{
+        e.preventDefault()
+        const {email, password, number}= this.state
+        this.props.authRegister(email, password, number)
+        this.props.history.push('/login')
+
+    }
+
     render() {
         return (
             <div>
@@ -49,17 +67,17 @@ export default class SignUp extends Component {
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl" for="email">
                         Email Adress :
                     </label>
-                    <input className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="text" placeholder="Enter your email adress" />
+                    <input onChange={e=>this.setState({email: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="text" placeholder="Enter your email adress" />
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="passowrd">
                         Password :
                     </label>
-                    <input className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your password" />
+                    <input onChange={e=>this.setState({password: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your password" />
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="phone number">
                         Phone Number :
                     </label>
-                    <input className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your phone number" />
+                    <input onChange={e=>this.setState({number: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your phone number" />
                 
             </form>
 
@@ -67,7 +85,7 @@ export default class SignUp extends Component {
             </div>
 
                 <div className="flex justify-center">
-                <button className="text-xl font-bold bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-2xl btn2 mt-14 btn-google">
+                <button onClick={this.onRegister} className="text-xl font-bold bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-2xl btn2 mt-14 btn-google">
                     Sign Up
                 </button>
                 </div>
@@ -157,3 +175,11 @@ export default class SignUp extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+const mapDispatchToProps = { authRegister}
+
+export default connect (mapStateToProps, mapDispatchToProps)(SignUp)

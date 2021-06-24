@@ -1,7 +1,8 @@
 const initialState = {
     onAuth: false,
     token: null,
-    errMessage:''
+    errMessage:'',
+    isRegister:false
 }
 
 const auth = (state=initialState, action)=>{
@@ -24,9 +25,16 @@ const auth = (state=initialState, action)=>{
                 errMessage: action.payload
             }
         }
+        case 'REGISTER': {
+            return {
+                ...state,
+                isRegister : true
+            }
+        }
         default: {
             return{
                 ...state
+                
             }
         }
     }

@@ -27,3 +27,24 @@ export const authLogin = (email, password) => {
         }
     }
 }
+
+export const authRegister = (email, password,number) => {
+    return async (dispatch) => {
+        const form = new URLSearchParams()
+        form.append('email', email)
+        form.append('password',password)
+        form.append('number',number)
+        try{
+            const {data} = await http().post(`${URL}/auth/register`, form.toString())
+            dispatch({
+                type:'REGISTER',
+                payload: data
+            })
+        }catch(err){
+            dispatch({
+                type: 'AUTH_LOGIN_FAILED',
+                payload: err.response.data.message
+            })
+        }
+    }
+}
