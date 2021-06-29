@@ -9,6 +9,8 @@ import SignUp from './pages/signup'
 import Navbar from './components/Navbar'
 import Payments from './pages/yourcart'
 import PrivateRoute  from './components/PrivateRoute'
+import Profile from './pages/profile'
+import HistoryDelete from './pages/HistoryDelete'
 
 
 import {connect} from 'react-redux'
@@ -29,14 +31,22 @@ class App extends Component {
           <Route path="/product/:id"  component={Details} />
           <Route path="/login"  component={Login} />
           <Route path="/signUp"  component={SignUp} />
+          <Route path="/history"  component={History} />
+  
+
+          <PrivateRoute path="/profile">
+            <Profile />
+          </PrivateRoute>
 
 
           <PrivateRoute path="/yourcart">
             <Payments />
           </PrivateRoute>
 
-          <PrivateRoute path="/history">
-            <History />
+
+
+          <PrivateRoute path="/delete">
+            <HistoryDelete />
           </PrivateRoute>
           
 

@@ -1,6 +1,5 @@
 import '../App.css'
 import React, { Component } from 'react'
-import logo from '../assets/assets1/coffe-icon.png'
 import ceklis from '../assets/assets1/ceklis.png'
 import ckls from '../assets/assets1/ckls.png'
 import img1 from '../assets/assets1/img-1.png'
@@ -15,10 +14,8 @@ import reddit from '../assets/assets1/reddit.png'
 import people1 from '../assets/assets1/people1.png'
 import people2 from '../assets/assets1/people2.png'
 import people3 from '../assets/assets1/people3.png'
-import fb from '../assets/assets1/fb.png'
-import tweet from '../assets/assets1/twit.png'
-import instagram from '../assets/assets1/ig.png'
 import img from '../assets/assets1/img.png'
+import Footer from '../components/Footer'
 
 
 
@@ -418,9 +415,9 @@ export default class Home extends Component {
                     
 
 
-                    <footer className="bg-gray-100">
+                    
 
-                        <div className="flex ">
+                        <div className="flex flex-row justify-center">
                         <div id="rect2" className="flex justify-between items-center shadow-2xl bg-white h-48 rounded-md px-20 ">
                             <div className="leading-10"> Check our promo <br /> today! <br /> 
                              <span className="text-base font-normal" >Let's see the deals and pick yours!</span></div>
@@ -430,58 +427,24 @@ export default class Home extends Component {
                          </button></div></a>
                          </div>
                         </div>
+
+                        
                 
-                        <div className="flex justify-around pt-24 -ml-40">
-                        <div>
-                            <div className="flex space-x-3">
-                                <div>
-                                    <img src={logo} alt="Logo" />
-                                </div>
-                                <div id="coffe_shop" className="items-center" >
-                                    Coffee Shop
-                                </div>
-                            </div>
+                        
                 
-                            <div id="text9" className="w-80 font-medium text-base pb-7 pt-7">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans 
-                            </div>
+                  
                 
-                            <div className="flex">
-                                <img src={fb} alt="fb" className="mr-2 w-10 h-10" />
-                                <img src={tweet} alt="tweet" className="mx-2 w-10 h-10" />
-                                <img src={instagram} alt="instagram" className="mx-2 w-10 h-10" />
-                            </div>
-                            
-                            <div className="pt-7" >©2020CoffeeStore</div>
-                        </div>
-                
-                        <div className="flex -mr-44">
-                        <div className="leading-10 text-lg pr-32" >
-                            <span className="font-medium text-black"> Product </span> <br />
-                            Download <br />
-                            Pricing <br />
-                            Locations <br />
-                            Countries <br />
-                            Blog <br />
-                        </div>
-                
-                        <div className="leading-10 text-lg" >
-                            <span className="font-medium text-black"> Engage </span> <br />
-                            Coffe Shop ?  <br />
-                            FAQ <br />
-                            About Us <br />
-                            Privacy Policy <br />
-                            Terms of Service <br />
-                        </div>
-                        </div>
-                
-                        </div>
-                
-                    </footer>
+                   
 
 
 
     </main>
+    <div className="bg-gray-100 h-16">
+    </div>
+    <Footer />
+    
             </div>
+
         )
     }
 }

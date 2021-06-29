@@ -4,6 +4,8 @@ import auth from './auth'
 import items from './items'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import user from './user'
+import history from './history'
 
 // const reducer = combineReducers({
 //     carts,
@@ -21,7 +23,9 @@ const persistAuth = {
 const rootReducer = combineReducers({
     auth: persistReducer(persistAuth, auth),
     carts,
-    items
+    items,
+    user,
+    history
 
 })
 

@@ -5,8 +5,34 @@ import vector from '../assets/assets3/Vector.png'
 import chat from '../assets/assets3/chat.png'
 import ujung from '../assets/assets3/ujung.png'
 import logo from '../assets/assets1/coffe-icon.png'
+import { authLogout } from '../redux/actions/auth'
 
 import {connect} from 'react-redux'
+
+const RightComponent = connect((state) => ({ auth: state.auth }), {authLogout})(({ auth, authLogout: logout }) => {
+        if( auth.token !== null ){
+            return (
+                <div>
+                    <button onClick={logout} type="button" className="rounded-lg bg-yellow-400 font-medium text-yellow-900 hover:bg-yellow-300 w-20 h-7"> Logout </button> 
+                </div>
+            );
+        }
+        return (
+            <div id="navbar2" class="flex justify-between space-x-7">
+                            
+            <Link to ="/login"><button class="bg-white hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+            Login
+            </button></Link>
+
+            <Link to="/signUp"><button class="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+                Sign Up
+            </button></Link>
+
+            </div>
+            
+        )
+    } )
+
 
 const Navbar = ({auth}) => {
         return (
@@ -41,23 +67,24 @@ const Navbar = ({auth}) => {
                 
                     <img src={vector} alt="search" class="w-7 h-7" />
                     <img src={chat} alt="chat" class="w-7 h-7" />
-                    <img src={ujung} alt="people" class="w-7 h-7 rounded-full" />
+                    <Link to="/profile"><img src={ujung} alt="people" class="w-7 h-7 rounded-full" /></Link>
+                    
+                        <RightComponent />
+
 
                     </div> 
                     ):(
-                        <>
                         <div id="navbar2" class="flex justify-between space-x-7">
-                        
+                            
                         <Link to ="/login"><button class="bg-white hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                         Login
                         </button></Link>
-
+            
                         <Link to="/signUp"><button class="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                             Sign Up
                         </button></Link>
-
+            
                         </div>
-                        </>
                     )}
 
                 </div>

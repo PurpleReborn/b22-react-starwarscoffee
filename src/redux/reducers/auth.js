@@ -31,6 +31,12 @@ const auth = (state=initialState, action)=>{
                 isRegister : true
             }
         }
+        case 'AUTH_LOGOUT': {
+            return {
+                ...state,
+                token: null
+            }
+        }
         default: {
             return{
                 ...state
