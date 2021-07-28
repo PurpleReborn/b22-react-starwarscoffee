@@ -33,8 +33,8 @@ export default class Home extends Component {
 
         <section className="satu bg">
 
-                    <div className="flex flex-row pl-36">
-                    <div className="flex-2 pr-64">
+                    <div className="flex justify-between  md:px-36 sm:px-4 flex-row px-1">
+                    <div className="flex-2">
                         <div id="start" className="text-white pt-20">
                             Start Your Day with <br /> Coffee and Good Meals
                         </div>
@@ -53,7 +53,7 @@ export default class Home extends Component {
                         </div>
                     </div>
 
-                    <div className="pt-5 flex-1">
+                    <div className="pt-5">
                         <div className="relative">
                         <i className="fas fa-search text-black mt-3 ml-5 absolute"></i>
                         <input type="text" placeholder="Search" className="rounded-full h-10 w-60 pl-14 hover:bg-gray-200" />

@@ -3,10 +3,94 @@ import React, { Component } from 'react'
 import img1 from '../assets/assets8/img1.png'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
-
+import { getUser } from '../redux/actions/user'
+import { createTransaction } from '../redux/actions/transaction'
+import Swal from 'sweetalert2';
 
 
 class Payments extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_id: [],
+      item_amount: 1,
+      item_additional_price: 0,
+      subTotal: '',
+      total: '',
+      payment_method: '',
+    };
+  }
+
+
+  componentDidMount() {
+    if (this.props.carts.items.length > 0) {
+      this.setData();
+    } else {
+      this.setState({
+        subTotal: 0,
+        total: 0
+      });
+    }
+  }
+
+  setData = () => {
+    const item_id = [];
+    // const item_amount = [];
+    // const item_additional_price = [];
+    this.props.carts.items.map((element) => item_id.push(element.id));
+    // this.props.carts.items.map((element) => item_amount.push(element.amount));
+    this.setState({
+      item_id: this.state.item_id.concat(item_id),
+      // item_amount: this.state.item_amount.concat(item_amount),
+    }, () => {
+      const subTotal = this.props.carts.items.map((element, idx) => element.price * this.state.item_amount[idx]).reduce((acc, curr) => acc + curr);
+      this.setState({
+        subTotal,
+        total: subTotal  + (subTotal * (10 / 100))
+      });
+    });
+  }
+
+  createTransaction = () => {
+    Swal.fire({
+      title: 'Create Transaction?',
+      text: 'Transaction',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#6A4029',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.value) {
+        const { token } = this.props.auth;
+        const {
+          item_id, item_amount, item_additional_price, payment_method
+        } = this.state;
+        this.setState({
+          subTotal: 0,
+          total: 0
+        });
+        this.props.createTransaction(item_id, item_amount, item_additional_price, payment_method, token)
+          .then(() => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Payment Successfully!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }).catch((err) => {
+            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'error',
+              text: 'Payment failed'
+            });
+          });
+      }
+    });
+  }
+
     render() {
         const {items} = this.props.carts
         return (
@@ -43,12 +127,12 @@ class Payments extends Component {
                 <div className ="flex flex-col pt-4">
                     <div className ="flex flex-row justify-between text-xl mr-2">
                     <div>SUBTOTAL</div>
-                    <div>IDR 120.000</div>
+                    <div>{this.state.subTotal}</div>
                     </div>
 
                     <div className ="flex flex-row justify-between text-xl mr-4 pt-2">
                     <div>TAX & FEES</div>
-                    <div>IDR 20.000</div>
+                    <div>10%</div>
                     </div>
 
                     <div className ="flex flex-row justify-between text-xl mr-5 pt-2">
@@ -58,7 +142,7 @@ class Payments extends Component {
 
                     <div className ="flex flex-row justify-center space-x-32 pb-4 pt-16 -ml-11  font-bold text-3xl bg-white rounded-2xl boxtotal">
                     <div>TOTAL</div>
-                    <div>IDR 150.000</div>
+                    <div>{this.state.total}</div>
                     </div>
 
                 </div>
@@ -76,9 +160,8 @@ class Payments extends Component {
             
             <div className ="bg-white box7 rounded-3xl">
                 <div className ="flex flex-col pt-7 pr-10 pl-10 divide-y-2 space-y-1">
-                    <div className ="text-2xl font-medium"><span className ="font-bold">Delivery</span> to Iskandar Street</div>
-                    <div className ="text-2xl font-normal pt-1">Km 5 refinery road oppsite re
-                        public road, effurun, Jakarta</div>
+                    <div className ="text-2xl font-medium"><span className ="font-bold">Delivery</span> to </div>
+                    <div className ="text-2xl font-normal pt-1">{this.props.user.data.address}</div>
                     <div className ="text-2xl font-normal pt-1">+62 81348287878</div>
                 </div>
             </div>
@@ -89,19 +172,22 @@ class Payments extends Component {
                 <div className ="flex flex-col pt-10 pr-10 pl-10 divide-y-2 space-y-6">
 
                     <div className ="flex flex-row">
-                    <div className ="pr-4 flex flex-col justify-center"><input type="radio" name="card" /></div>
+                    <div className ="pr-4 flex flex-col justify-center">
+                        <input type="radio" onChange={(e) => this.setState({ payment_method: e.target.value, button: false })} name="payment" value="Credit Card" /></div>
                     <div className ="mr-4 flex flex-col rounded-xl bg-yellow-500 w-10 h-10 text-center justify-center"><i className ="fas  fa-credit-card"></i></div>
                     <div className ="text-2xl font-normal">Card</div>
                     </div>
 
                     <div className ="flex flex-row pt-2">
-                    <div className ="pr-4 flex flex-col justify-center"><input type="radio" name="card" /></div>
+                    <div className ="pr-4 flex flex-col justify-center">
+                        <input type="radio" onChange={(e) => this.setState({ payment_method: e.target.value, button: false })} name="payment" value="Bank"/></div>
                     <div className ="mr-4 flex flex-col rounded-xl bg-yellow-900 w-10 h-10 text-center justify-center text-lg"><i className ="fas fa-university "></i></div>
                     <div className ="text-2xl font-normal">Bank account</div>
                     </div>
 
                     <div className ="flex flex-row pt-2">
-                    <div className ="pr-4 flex flex-col justify-center"><input type="radio" name="card" /></div>
+                    <div className ="pr-4 flex flex-col justify-center">
+                        <input type="radio" onChange={(e) => this.setState({ payment_method: e.target.value, button: false })} name="payment" value="Cod"  /></div>
                     <div className ="mr-4 flex flex-col rounded-xl bg-yellow-300 w-10 h-10 text-center justify-center text-lg"><i className ="fas fa-shipping-fast"></i></div>
                     <div className ="text-2xl font-normal">Cash on delivery</div>
                     </div>
@@ -109,7 +195,8 @@ class Payments extends Component {
                 </div>
             </div>
 
-            <div className ="pt-12"><button className ="btn bg-yellow-900 text-white font-bold text-xl text-center hover:bg-yellow-700 rounded-3xl ">Confirm and Pay
+            <div className ="pt-12">
+                <button  type="button" disabled={this.state.button} onClick={() => this.createTransaction()} className ="btn bg-yellow-900 text-white font-bold text-xl text-center hover:bg-yellow-700 rounded-3xl ">Confirm and Pay
 
             </button></div>
 
@@ -133,7 +220,14 @@ class Payments extends Component {
 }
 
 const mapStateToProps = state => ({
-    carts:state.carts
+    auth: state.auth,
+    carts: state.carts,
+    user: state.user
 })
 
-export default connect(mapStateToProps)(Payments)
+const mapDispatchToProps = {
+    getUser,
+    createTransaction
+  };
+
+export default connect(mapStateToProps,mapDispatchToProps)(Payments)

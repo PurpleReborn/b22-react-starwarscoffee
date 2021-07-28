@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 
-import { getHistory } from '../redux/actions/history'
+import { getHistory } from '../redux/actions/transaction'
 import { Link } from 'react-router-dom'
 
 
@@ -13,11 +13,12 @@ import { Link } from 'react-router-dom'
 class History extends Component {
 
     componentDidMount() {
-        this.props.getHistory(this.props.auth.token)
+        const {token} = this.props.auth
+        this.props.getHistory(token)
     }
 
     render() {
-        const {data} = this.props.history
+        const {data} = this.props.transaction
         return (
 <div>
 
@@ -47,15 +48,15 @@ class History extends Component {
                 
                 <div className="flex flex-row space-x-5  mr-10 ml-6 mt-6">
                     
-                    <div className="w-16 h-16 bg-yellow-900 rounded-full pr-3"></div>
+                    <div className="w-16 h-16 -mt-5 bg-yellow-900 rounded-full pr-3"></div>
                     <div className="flex flex-col">
-                        <div className="font-bold text-xl">{items.name}</div>
-                        <div>IDR.{items.price.toLocaleString('en')}</div>
+                        <div className="font-bold text-bg-gray-900 ">{items.code}</div>
+                        <div>IDR.{items.total}</div>
                         <div>Delivered</div>
 
-                        <div className="absolute pl-24 pt-10">
+                        <div className="absolute pl-24 ">
                             <label class="inline-flex items-center mt-3">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-yellow-600" />
+                            <input type="checkbox" class="form-checkbox ml-5 -mt-15 h-5 w-5 text-yellow-600" />
                             <span class="ml-2 text-gray-700"></span>
                             </label>
                         </div>
@@ -90,7 +91,7 @@ class History extends Component {
 }
 
 const mapStateToProps = state => ({
-    history: state.history,
+    transaction: state.transaction,
     auth : state.auth
 })
 

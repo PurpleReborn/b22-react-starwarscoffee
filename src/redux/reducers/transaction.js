@@ -1,13 +1,13 @@
 const initialState = {
 
     data: [],
-    errMessage : null
-
+    errMsg : '',
+    msg:''
     // pageInfo:[]
     
 }
 
-const history = (state=initialState, action)=> {
+const transaction = (state=initialState, action)=> {
     switch(action.type){
         case 'HISTORY_GET': {
             return {
@@ -18,9 +18,20 @@ const history = (state=initialState, action)=> {
     }        case 'HISTORY_GET_FAILED': {
         return {
             ...state,
-            errMessage: action.payload
+            errMsg: action.payload
         }
-    }
+    }    case 'CREATE_TRANSACTION': {
+        return {
+          ...state,
+          msg: action.payload,
+        };
+      }
+      case 'CREATE_TRANSACTION_FAILED': {
+        return {
+          ...state,
+          errMsg: action.payload,
+        };
+      }
        
         default: {
             return {
@@ -30,4 +41,4 @@ const history = (state=initialState, action)=> {
     }
 }
 
-export default history
+export default transaction

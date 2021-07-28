@@ -30,6 +30,22 @@ const items = (state=initialState, action)=> {
                 details: action.payload
             }
         }
+        case 'GET_PRODUCT_SEARCH': {
+            return {
+              ...state,
+              dataSearch: action.payload.results,
+              pageInfo: action.payload.pageInfo,
+              errMsg: ''
+            };
+          }
+          case 'GET_PRODUCT_SEARCH_FAILED': {
+            return {
+              ...state,
+              errMsg: action.payload,
+              dataSearch: [],
+              pageInfo: [],
+            };
+          }
         default: {
             return {
                 ...state

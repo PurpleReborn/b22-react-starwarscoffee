@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../App.css'
 import { Link } from 'react-router-dom'
 import vector from '../assets/assets3/Vector.png'
@@ -6,6 +6,7 @@ import chat from '../assets/assets3/chat.png'
 import ujung from '../assets/assets3/ujung.png'
 import logo from '../assets/assets1/coffe-icon.png'
 import { authLogout } from '../redux/actions/auth'
+import { getUser} from '../redux/actions/user'
 
 import {connect} from 'react-redux'
 
@@ -34,7 +35,15 @@ const RightComponent = connect((state) => ({ auth: state.auth }), {authLogout})(
     } )
 
 
-const Navbar = ({auth}) => {
+function Navbar  ({  
+    auth,
+    user,
+}) {
+        useEffect(() => {
+            // console.log(auth);
+            getUser(auth.token);
+          }, [auth.token]);
+    
         return (
                          
 
@@ -63,24 +72,24 @@ const Navbar = ({auth}) => {
                     
                     {auth.token!==null ? 
                     (       
-                    <div id="navbar2" class="flex justify-between space-x-7">
+                    <div id="navbar2" className="flex justify-between space-x-7">
                 
-                    <img src={vector} alt="search" class="w-7 h-7" />
-                    <img src={chat} alt="chat" class="w-7 h-7" />
-                    <Link to="/profile"><img src={ujung} alt="people" class="w-7 h-7 rounded-full" /></Link>
-                    
+                    <img src={vector} alt="search" className="w-7 h-7" />
+                    <img src={chat} alt="chat" className="w-7 h-7" />
+                    <Link to="/profile"><img alt="" src={user.data.picture === null ? ujung : `http://localhost:8080${user.data.picture}` } className="w-7 h-7 rounded-full" /></Link>
+
                         <RightComponent />
 
-
+                        
                     </div> 
                     ):(
-                        <div id="navbar2" class="flex justify-between space-x-7">
+                        <div id="navbar2" className="flex justify-between space-x-7">
                             
-                        <Link to ="/login"><button class="bg-white hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+                        <Link to ="/login"><button className="bg-white hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                         Login
                         </button></Link>
             
-                        <Link to="/signUp"><button class="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+                        <Link to="/signUp"><button className="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                             Sign Up
                         </button></Link>
             
@@ -95,8 +104,11 @@ const Navbar = ({auth}) => {
     }
 
 
-const mapStateToProps = state => ({
-    auth: state.auth
-})
+    const mapStateToProps = state => ({
+        auth : state.auth,
+        user: state.user
+    })
+    
+    const mapDispatchToProps = {getUser}
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)

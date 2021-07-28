@@ -37,3 +37,18 @@ export const getDetails = (id) => {
         })
     }
 }
+
+export const getDataSearch = (token, search, limit, page, order, sort) => async (dispatch) => {
+    try {
+      const { data } = await http(token).get(`${URL}/items?search=${search}&limit=${limit}&order=${order}&sort=${sort}&page=${page}`);
+      dispatch({
+        type: 'GET_PRODUCT_SEARCH',
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: 'GET_PRODUCT_SEARCH_FAILED',
+        payload: err.response.data.message,
+      });
+    }
+  };

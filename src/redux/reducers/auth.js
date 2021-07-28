@@ -28,9 +28,15 @@ const auth = (state=initialState, action)=>{
         case 'REGISTER': {
             return {
                 ...state,
-                isRegister : true
-            }
+                succMsg: action.payload,
+              };
         }
+        case 'REGISTER_FAILED': {
+            return {
+              ...state,
+              errMsg: action.payload,
+            };
+          }
         case 'AUTH_LOGOUT': {
             return {
                 ...state,

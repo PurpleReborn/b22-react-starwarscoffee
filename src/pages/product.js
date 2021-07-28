@@ -6,21 +6,33 @@ import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { getItems } from '../redux/actions/items'
+import { getItems} from '../redux/actions/items'
+
 
 
 
 class Product extends Component {
+constructor(props) {
+       super(props);
+       this.state = {
+         search: '',
+         page: '',
+        sort: '',
+        order: ''
+    };
+}
 
 
     componentDidMount() {
-        this.props.getItems()
+        this.props.getItems();
     }
 
     // loadMore =()=>{
     //     const {nextLink} = this.props.items
     //     this.props.getItems(nextLink)
     // }
+
+
 
     render() {
         const {data} = this.props.items
@@ -82,10 +94,20 @@ class Product extends Component {
                 <div className="hover:text-yellow-900">Add-on</div>
             </div>
 
+            <div className="pt-5 flex-1">
+                        <div className="relative">
+                        <i className="fas fa-search text-black mt-3 ml-5 absolute"></i>
+                            <input 
+                            type="text" placeholder="Search" 
+                            className="rounded-full h-10 w-60 pl-12 ml-20 bg-gray-200 hover:bg-gray-300" 
+                            />
+                        </div>
+                    </div>
+
         
 
             
-            <div className="grid grid-cols-4 gap-20 mr-20 ml-20 mt-32 ">
+            <div className="grid grid-cols-4 gap-20 mr-20 ml-20 mt-28 ">
 
             {data.map(items => {
             return(

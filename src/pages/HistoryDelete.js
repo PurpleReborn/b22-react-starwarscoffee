@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 
-import { getHistory } from '../redux/actions/history'
+import { getHistory } from '../redux/actions/transaction'
 import { Link } from 'react-router-dom'
 
 
