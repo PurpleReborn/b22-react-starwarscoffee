@@ -36,7 +36,7 @@ export const updateUser = (token, Data) => async (dispatch) => {
       });
     } catch (err) {
       dispatch({
-        type: 'UPDATE_USER_FAILED',
+        type: 'USER_UPDATE_FAILED',
         payload: err.response.data.message,
       });
     }
