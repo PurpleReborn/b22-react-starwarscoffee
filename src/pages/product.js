@@ -112,14 +112,14 @@ constructor(props) {
             {data.map(items => {
             return(
 
-            <Link to={`/product/${items.id}`}>
+            <Link  className="no-underline" to={`/product/${items.id}`}>
             <div key={items.id.toString()} className="item1 border-2 border-transparent border-3xl rounded-3xl hover:border-yellow-400">
             <div className=" w-40  h-52 bg-white rounded-3xl shadow-2xl ">
             <div>
                 <img src={img2} alt="img2" className="rounded-full -mt-10 ml-4 absolute" />
             </div>
 
-            <div className="text-center pt-24 w-20 mx-auto leading-5 font-black text-xl ">{items.name}</div>
+            <div className="text-center pt-24 w-20 mx-auto leading-5 font-black text-black no-underline text-xl ">{items.name}</div>
 
             <div className="text-center mt-1 text-yellow-900 text-base font-bold">IDR.{items.price.toLocaleString('en')}</div>
 

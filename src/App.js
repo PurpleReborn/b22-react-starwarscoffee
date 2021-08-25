@@ -11,18 +11,21 @@ import Payments from './pages/yourcart'
 import PrivateRoute  from './components/PrivateRoute'
 import Profile from './pages/profile'
 import HistoryDelete from './pages/HistoryDelete'
+import Chat from './pages/Chat'
 
 
 import {connect} from 'react-redux'
 
 class App extends Component {
     render() {
-      const {onAuth} = this.props.auth
+      // const {onAuth} = this.props.auth
       return (
 
         <BrowserRouter>
+        <Navbar/>
+{/*     
 
-        {!onAuth && <Navbar />}
+        {!onAuth && <Navbar />} */}
           <Switch>
             
 
@@ -47,6 +50,10 @@ class App extends Component {
 
           <PrivateRoute path="/delete">
             <HistoryDelete />
+          </PrivateRoute>
+
+          <PrivateRoute path="/Chat">
+            <Chat />
           </PrivateRoute>
           
 

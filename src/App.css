@@ -340,3 +340,19 @@ footer{
   width: 194px;
   height: 82px;
 }
+
+.bg19{
+  background-image: url(../src/assets/assets9/chat.png);
+  width: 100%;
+  height: 1112px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-chat-1{
+  background-color: #6A4029;
+}
+
+.bg-search{
+  background-color: #6A4029;
+}

@@ -33,7 +33,7 @@ export default class Home extends Component {
 
         <section className="satu bg">
 
-                    <div className="flex justify-between  md:px-36 sm:px-4 flex-row px-1">
+                    <div className="flex justify-between  px-36  flex-row">
                     <div className="flex-2">
                         <div id="start" className="text-white pt-20">
                             Start Your Day with <br /> Coffee and Good Meals

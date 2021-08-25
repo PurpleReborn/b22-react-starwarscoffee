@@ -19,11 +19,14 @@ const RightComponent = connect((state) => ({ auth: state.auth }), {authLogout})(
             );
         }
         return (
-            <div id="navbar2" class="flex justify-between space-x-7">
-                            
-            <Link to ="/login"><button class="bg-white hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
-            Login
+            <div id="navbar2" class="flex text-yellow-900 justify-between space-x-7">
+
+              <div>            
+            <Link  to ="/login">
+            <button class="bg-yellow-400  hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+             Login
             </button></Link>
+            </div>  
 
             <Link to="/signUp"><button class="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                 Sign Up
@@ -60,11 +63,11 @@ function Navbar  ({
                 </div>
 
                 <div>
-                    <ul id="navbar" className="flex justify-between space-x-7">
-                        <li className="hover:text-yellow-700 font-medium text-gray-600"><Link to ="/">Home </Link> </li>
-                        <li className="hover:text-yellow-700 font-medium text-gray-600"><Link to ="/product">Product </Link> </li>
-                        <li className="hover:text-yellow-700 font-medium text-gray-600"><Link to ="/yourcart">Your Cart </Link> </li>
-                        <li className="hover:text-yellow-700 font-medium text-gray-600"><Link to ="/history">History </Link> </li>
+                    <ul id="navbar" className=" flex justify-between space-x-7">
+                    <Link  className="no-underline" to ="/"><li className="text-black font-medium ">Home  </li></Link>
+                        <Link className="no-underline" to ="/product"><li className=" hover:text-yellow-700 font-medium text-black">Product  </li></Link>
+                        <Link  className="no-underline" to ="/yourcart"><li className="hover:text-yellow-700 font-medium text-black">Your Cart </li></Link>
+                        <Link  className="no-underline" to ="/history"><li className="hover:text-yellow-700 font-medium text-black">History  </li></Link>
                     </ul>
                 </div>
 
@@ -75,7 +78,7 @@ function Navbar  ({
                     <div id="navbar2" className="flex justify-between space-x-7">
                 
                     <img src={vector} alt="search" className="w-7 h-7" />
-                    <img src={chat} alt="chat" className="w-7 h-7" />
+                    <Link to="/Chat"><img src={chat} alt="chat" className="w-7 h-7" /></Link> 
                     <Link to="/profile"><img alt="" src={user.data.picture === null ? ujung : `http://localhost:8080${user.data.picture}` } className="w-7 h-7 rounded-full" /></Link>
 
                         <RightComponent />

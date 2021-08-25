@@ -163,7 +163,7 @@ class Profile extends Component {
 
             <div className="flex flex-col">
             <div className="bg-white box-profile-2 rounded-t-xl">
-                <div className="flex justify-between ml-7 mr-5 pt-4 pb-5">
+                <div className="flex justify-between ml-7 mr-5 pt-4 pb-4">
                 <div className="font-bold text-2xl" >Contacts</div> 
                 
                 <div className="bg-yellow-900 w-10 h-10 rounded-full text-center hover:bg-yellow-400">
@@ -175,17 +175,17 @@ class Profile extends Component {
                     <div className="flex flex-row justify-between ml-8 mr-8">
                         <div className="flex  flex-col w-80">
                             <label for="email" className="mb-4">Email adress :</label>
-                            <input value={this.state.email} onChange={(e) => { this.setState({ email: e.target.value }); }} type="email" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                            <input value={this.state.email} onChange={(e) => { this.setState({ email: e.target.value }); }} type="email" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                         <div className="flex flex-col w-80">
                             <label for="email" className="mb-4">Mobile number : </label>
-                            <input  value={this.state.number} onChange={(e) => { this.setState({ number: e.target.value }); }} type="text"  className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                            <input  value={this.state.number} onChange={(e) => { this.setState({ number: e.target.value }); }} type="text"  className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                     </div>
                    
-                        <div className="flex  flex-col w-80 ml-8 pt-12">
+                        <div className="flex  flex-col w-80 ml-8 pt-6">
                             <label for="email" className="mb-4">Delivery adress :</label>
-                            <input value={this.state.address} onChange={(e) => { this.setState({ address: e.target.value }); }} type="text" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                            <input value={this.state.address} onChange={(e) => { this.setState({ address: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                     
 
@@ -204,19 +204,19 @@ class Profile extends Component {
                 <div className="font-bold text-2xl pl-8 pt-7"  >Details</div> 
                 <div className="flex flex-row">
                 <div className="">
-                <div className="flex  flex-col w-80 ml-8 pt-8">
-                    <label for="email" className="mb-4">Display name :</label>
-                    <input value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value }); }} type="text" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                <div className="flex  flex-col w-80 ml-8 pt-4">
+                    <label for="email" className="mb-2">Display name :</label>
+                    <input value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
 
-                <div className="flex  flex-col w-80 ml-8 pt-8">
-                    <label for="email" className="mb-4">First name :</label>
-                    <input value={this.state.firstName} onChange={(e) => { this.setState({ firstName: e.target.value }); }} type="text" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                <div className="flex  flex-col w-80 ml-8 pt-4">
+                    <label for="email" className="mb-2">First name :</label>
+                    <input value={this.state.firstName} onChange={(e) => { this.setState({ firstName: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
 
-                <div className="flex  flex-col w-80 ml-8 pt-8">
-                    <label for="email" className="mb-4">Last name :</label>
-                    <input value={this.state.lastName} onChange={(e) => { this.setState({ lastName: e.target.value }); }} type="text" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black" />
+                <div className="flex  flex-col w-80 ml-8 pt-4">
+                    <label for="email" className="mb-2">Last name :</label>
+                    <input value={this.state.lastName} onChange={(e) => { this.setState({ lastName: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
                 </div>
 

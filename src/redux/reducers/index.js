@@ -5,6 +5,7 @@ import items from './items'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import user from './user'
+import chat from './chat'
 import transaction from './transaction'
 
 // const reducer = combineReducers({
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     carts,
     items,
     user,
-    transaction
+    transaction,
+    chat
 
 })
 
