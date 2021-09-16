@@ -1,4 +1,6 @@
  import { http } from "../../helpers/http"
+ import { useHistory } from 'react-router';
+ import Swal from 'sweetalert2'
 
  const {REACT_APP_BACKEND_URL: URL} = process.env
  
@@ -40,6 +42,16 @@ export const authRegister = (email, password,number) => {
                 type:'REGISTER',
                 payload: data
             })
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'Success create account',
+                showConfirmButton: false,
+                timer: 2000,
+                iconColor:'#6A4029',
+              })
+            // let history = useHistory()
+            // history.push('/login')
         }catch(err){
             dispatch({
                 type: 'REGISTER_FAILED',
@@ -52,5 +64,17 @@ export const authRegister = (email, password,number) => {
 export const authLogout = ()=>({
     type: 'AUTH_LOGOUT'
 })
+
+// export const clearMessage = () => ({
+//     type: 'SET_CLEAR_MESSAGE',
+//   })
+
+  export const clearMessage = () => (dispatch) => {
+    setTimeout(() => {
+      dispatch({
+        type: 'SET_CLEAR_MESSAGE'
+      });
+    }, 5000);
+  };
 
 

@@ -1,8 +1,10 @@
 const initialState = {
+    message: '',
     onAuth: false,
     token: null,
     errMessage:'',
-    isRegister:false
+    isRegister:false,
+    errMessage2:''
 }
 
 const auth = (state=initialState, action)=>{
@@ -28,13 +30,14 @@ const auth = (state=initialState, action)=>{
         case 'REGISTER': {
             return {
                 ...state,
-                succMsg: action.payload,
+                isRegister: !state.isRegister,
               };
         }
         case 'REGISTER_FAILED': {
             return {
               ...state,
-              errMsg: action.payload,
+              isRegister:false,
+              errMessage: action.payload,
             };
           }
         case 'AUTH_LOGOUT': {
@@ -43,6 +46,11 @@ const auth = (state=initialState, action)=>{
                 token: null
             }
         }
+        case 'SET_CLEAR_MESSAGE':
+            return {
+              ...state,
+              errMessage: '',
+            }
         default: {
             return{
                 ...state

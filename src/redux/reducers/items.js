@@ -10,8 +10,8 @@ const items = (state=initialState, action)=> {
         case 'ITEMS_GET': {
             return {
             ...state,
-            data: action.payload.items
-            // pageInfo:action.payload.pageInfo
+            data: action.payload.items,
+            pageInfo:action.payload.pageInfo
         }
     }
         case 'ITEMS_GET_NEXT': {
@@ -20,8 +20,8 @@ const items = (state=initialState, action)=> {
             data: [
             ...state.data,
             ...action.payload.items
-            ]
-            // pageInfo:action.payload.pageInfo
+            ],
+            pageInfo:action.payload.pageInfo
         }
     }
         case 'ITEMS_GET_DETAILS' : {

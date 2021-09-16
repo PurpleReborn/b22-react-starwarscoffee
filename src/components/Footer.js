@@ -11,13 +11,13 @@ export default class Footer extends Component {
             
         <div className="bg-gray-100 footer">
 
-        <div className="flex justify-around pt-24 -ml-40">
+        <div className="flex flex-col mx-4 md:mx-0 md:flex-row justify-around pt-24 md:-ml-40 ">
         <div>
             <div className="flex space-x-3">
                 <div>
                 <img src={logo} alt="Logo" />
                 </div>
-                <div id="coffe_shop" className="items-center font-bold text-xl" >
+                <div id="coffe_shop" className="items-center font-bold md:text-xl" >
                     Coffee Shop
                 </div>
             </div>
@@ -31,11 +31,11 @@ export default class Footer extends Component {
             <img src={instagram} alt="instagram" className="mx-2 w-10 h-10" />
             </div>
             
-            <div className="pt-7" >©2020CoffeeStore</div>
+            <div className="pt-7 md:pb-0 pb-4" >©2020CoffeeStore</div>
         </div>
 
-        <div className="flex -mr-44">
-        <div className="leading-10 text-lg pr-32" >
+        <div className="flex -mr-44 md:pb-0 pb-10">
+        <div className="leading-10 text-sm md:text-lg pr-32" >
             <span className="font-medium text-black"> Product </span> <br />
             Download <br />
             Pricing <br />
@@ -44,7 +44,7 @@ export default class Footer extends Component {
             Blog <br />
         </div>
 
-        <div className="leading-10 text-lg" >
+        <div className="leading-10 text-sm md:text-lg" >
             <span className="font-medium text-black"> Engage </span> <br />
             Coffe Shop ?  <br />
             FAQ <br />

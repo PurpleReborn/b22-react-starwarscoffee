@@ -11,7 +11,7 @@ import Payments from './pages/yourcart'
 import PrivateRoute  from './components/PrivateRoute'
 import Profile from './pages/profile'
 import HistoryDelete from './pages/HistoryDelete'
-import Chat from './pages/Chat'
+import Chat from './pages/chat'
 
 
 import {connect} from 'react-redux'
@@ -52,7 +52,7 @@ class App extends Component {
             <HistoryDelete />
           </PrivateRoute>
 
-          <PrivateRoute path="/Chat">
+          <PrivateRoute path="/chat">
             <Chat />
           </PrivateRoute>
           

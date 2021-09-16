@@ -190,17 +190,17 @@ class Chat extends Component {
         return (
     <div>
         <div className="bg19">
-            <div className="mx-40 flex flex-row justify-center">
+            <div className="mx-5 md:mx-40 flex flex-col md:flex-row justify-center">
 
-              <div className="rounded-bl-2xl rounded-tl-2xl mt-16 bg-chat-1 w-96 ">
-                    <div className="pt-5 mx-16">
+              <div className="rounded-2xl md:rounded-bl-2xl md:rounded-tl-2xl mt-16 bg-chat-1  md:w-96 ">
+                    <div className="pt-5 mx-4 md:mx-16">
                         <div className="relative">
                         <i className="fas fa-search text-black mt-3 ml-5 absolute"></i>
                         <input onKeyDown={(e) => this.onSearch(e)} value={this.state.search} onChange={e=>this.setState({search:e.target.value})} type="text" placeholder="Searchhh" className="rounded-full h-10 w-60 pl-14 hover:bg-gray-200" />
                         </div>
                     </div>
                     <div className="flex flex-row">
-                         <select className="text-center w-28 rounded-lg ml-16 my-2 bg-gray-50 md:text-base text-xs" value={this.state.column} onChange={e=>this.setState({column:e.target.value})} id="column">
+                         <select className="text-center w-28 rounded-lg mx-4 md:ml-16 my-2 bg-gray-50 md:text-base text-xs" value={this.state.column} onChange={e=>this.setState({column:e.target.value})} id="column">
                           <option className="md:text-base text-xs" value="name">Name</option>
                           <option className="md:text-base text-xs" value="number">Phone</option>
                         </select>
@@ -216,7 +216,7 @@ class Chat extends Component {
 
                     { this.state.search !== '' ? (
             
-            <div className="bg-search flex flex-col flex-initial absolute mt-20 w-96 rounded-b-2xl overflow-y-scroll overscroll-none h-60">
+            <div className="bg-search flex flex-col flex-initial absolute mt-20 w-96 rounded-2xl md:rounded-b-2xl overflow-y-scroll overscroll-none h-60">
               {this.state.searchData.map(dataSearch => {
               return dataSearch.name !== this.props.user.data.name  ?
               <div key={dataSearch.id} onClick={() => this.onRedirect(dataSearch)} className="flex flex-row cursor-pointer pt-8 p-3">

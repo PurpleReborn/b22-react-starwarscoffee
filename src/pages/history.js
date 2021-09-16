@@ -27,7 +27,7 @@ class History extends Component {
 
     <div className="bg4">
 
-    <div className="text-white  font-bold text-4xl  pt-28 text-center ">Let’s see what you have bought! <br />
+    <div className="text-white  font-bold md:text-4xl text-xl pt-28 text-center ">Let’s see what you have bought! <br />
         <span className="text-lg font-normal "> Select item to delete </span>
 
     </div>

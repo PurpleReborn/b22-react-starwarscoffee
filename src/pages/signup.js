@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
 import '../App.css'
 import { Link } from 'react-router-dom'
 import bg5 from '../assets/assets2/bg2.png'
@@ -8,26 +8,66 @@ import fb from '../assets/assets1/fb.png'
 import tweet from '../assets/assets1/twit.png'
 import instagram from '../assets/assets1/ig.png'
 import { connect } from 'react-redux'
-import { authRegister } from '../redux/actions/auth'
+import { authRegister,clearMessage } from '../redux/actions/auth'
+// import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom'
+// const Toast = Swal.fire({
+//     position: 'center',
+//     icon: 'info',
+//     title: 'Profile Updated!',
+//     showConfirmButton: false,
+//     timer: 2000,
+//     iconColor:'#6A4029',
+//   })
 
 
-class SignUp extends Component {
+const SignUp = (props) => {
+    let history = useHistory()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [number, setNumber] = useState('')
+    // const { token } = props.auth
+    const { errMessage } = props.auth
+    const { isRegister } = props.auth
 
-    state ={
-        email: '',
-        password:'',
-        number:''
-    }
-
-    onRegister = (e)=>{
+    const onSignUp = (e) => {
+        if (isRegister) {
+            history.push('/login');
+          }
         e.preventDefault()
-        const {email, password, number}= this.state
-        this.props.authRegister(email, password, number)
-        this.props.history.push('/login')
+        props.authRegister(email, password, number)
 
-    }
+      };
 
-    render() {
+    
+      useEffect(() => {
+        if (errMessage !== '') {
+          props.clearMessage();
+        }
+      }, [errMessage]);
+
+    //   useEffect(() => {
+    //     if (errMessage2 !== '') {
+    //       props.clearMessage();
+    //     }
+    //   }, [errMessage2]);
+
+
+
+    // state ={
+    //     email: '',
+    //     password:'',
+    //     number:''
+    // }
+
+    // onRegister = (e)=>{
+    //     e.preventDefault()
+    //     const {email, password, number}= this.state
+    //     this.props.authRegister(email, password, number)
+    //     this.props.history.push('/login')
+
+    // }
+
         return (
             <div>
 
@@ -62,33 +102,35 @@ class SignUp extends Component {
 
             <div className="text-4xl font-bold text-yellow-900 text-center pt-16 pb-20">Sign Up</div>
             <div className="flex justify-center">
-            <form action="">
+            <form onSubmit={onSignUp}>
+            {errMessage!=='' && <div className="pl-3 bg-red-300 text-red-600 mb-10  pt-2 pb-2">{errMessage}</div>}
                 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl" for="email">
                         Email Adress :
                     </label>
-                    <input onChange={e=>this.setState({email: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="text" placeholder="Enter your email adress" />
+                    <input onChange={(e) => setEmail(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="text" placeholder="Enter your email adress" />
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="passowrd">
                         Password :
                     </label>
-                    <input onChange={e=>this.setState({password: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your password" />
+                    <input onChange={(e) => setPassword(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your password" />
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="phone number">
                         Phone Number :
                     </label>
-                    <input onChange={e=>this.setState({number: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your phone number" />
+                    <input onChange={(e) => setNumber(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="email" type="text" placeholder="Enter your phone number" />
                 
+                    <div className="flex justify-center">
+                <button type="submit" className="text-xl font-bold bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-2xl btn2 mt-14 btn-google">
+                    Sign Up
+                </button>
+                </div>
             </form>
 
 
             </div>
 
-                <div className="flex justify-center">
-                <button onClick={this.onRegister} className="text-xl font-bold bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-2xl btn2 mt-14 btn-google">
-                    Sign Up
-                </button>
-                </div>
+
 
                 <div className="flex justify-center">
                     
@@ -174,12 +216,12 @@ class SignUp extends Component {
             </div>
         )
     }
-}
+
 
 const mapStateToProps = state => ({
     auth: state.auth
 })
 
-const mapDispatchToProps = { authRegister}
+const mapDispatchToProps = { authRegister, clearMessage}
 
 export default connect (mapStateToProps, mapDispatchToProps)(SignUp)

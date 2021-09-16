@@ -51,9 +51,9 @@ function Navbar  ({
                          
 
             <nav className="bg-white ">
-            <div className="flex justify-around items-center py-7">
+            <div className="flex mx-4 md:justify-around flex-col md:flex-row  md:items-center py-5 space-y-4">
 
-                <div className="flex justify-between space-x-3">
+                <div className="flex md:justify-between space-x-3">
                     <div>
                     <img src={logo} alt="Logo" />
                     </div>
@@ -63,7 +63,7 @@ function Navbar  ({
                 </div>
 
                 <div>
-                    <ul id="navbar" className=" flex justify-between space-x-7">
+                    <ul id="navbar" className=" flex md:justify-between space-x-3 md:space-x-7">
                     <Link  className="no-underline" to ="/"><li className="text-black font-medium ">Home  </li></Link>
                         <Link className="no-underline" to ="/product"><li className=" hover:text-yellow-700 font-medium text-black">Product  </li></Link>
                         <Link  className="no-underline" to ="/yourcart"><li className="hover:text-yellow-700 font-medium text-black">Your Cart </li></Link>
@@ -78,7 +78,7 @@ function Navbar  ({
                     <div id="navbar2" className="flex justify-between space-x-7">
                 
                     <img src={vector} alt="search" className="w-7 h-7" />
-                    <Link to="/Chat"><img src={chat} alt="chat" className="w-7 h-7" /></Link> 
+                    <Link to="/chat"><img src={chat} alt="chat" className="w-7 h-7" /></Link> 
                     <Link to="/profile"><img alt="" src={user.data.picture === null ? ujung : `http://localhost:8080${user.data.picture}` } className="w-7 h-7 rounded-full" /></Link>
 
                         <RightComponent />

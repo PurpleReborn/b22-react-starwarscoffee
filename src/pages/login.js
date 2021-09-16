@@ -1,37 +1,75 @@
 import '../App.css'
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import {Link} from 'react-router-dom'
 import logo from '../assets/assets1/coffe-icon.png'
 import bg5 from '../assets/assets2/bg2.png'
 import google from '../assets/assets2/google.png'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
-import { toggleAuth,authLogin } from '../redux/actions/auth'
+import { toggleAuth,authLogin,clearMessage } from '../redux/actions/auth'
+import { useHistory } from 'react-router-dom'
 
-class Login extends Component {
-    state ={
-        email: '',
-        password:''
-    }
+// class Login extends Component {
+    function Login(props) {
+        let history = useHistory()
+        const [email, setEmail] = useState('')
+        const [password, setPassword] = useState('')
+        const { token } = props.auth
+        const { errMessage } = props.auth
 
-    componentDidMount(){
-        this.props.toggleAuth()
-    }
-    onLogin = (e)=>{
-        e.preventDefault()
-        const {email, password}= this.state
-        this.props.authLogin(email, password)
+        // const isLogin = () => {
+        //     if (token !== null) {
+        //       history.push('/')
+        //     }
+        //   }
 
-    }
-    componentDidUpdate(){
-        const {token} = this.props.auth
-        if(token!==null){
-            this.props.toggleAuth()
-            this.props.history.push('/')
-        }
-    }
-    render() {
-        const {errMessage} = this.props.auth
+        const onLogin = (e) => {
+            e.preventDefault()
+            props.authLogin(email, password)
+          }
+
+        //   useEffect(() => {
+        //     props.toggleAuth()
+        //     props.clearMessage()
+        //     isLogin()
+        //   }, [token])
+
+        useEffect(() => {
+            if (token !== null) {
+              props.toggleAuth();
+              history.push('/');
+            }
+          });
+        
+          useEffect(() => {
+            if (errMessage !== '') {
+              props.clearMessage();
+            }
+          }, [errMessage]);
+    // state ={
+    //     email: '',
+    //     password:''
+    // }
+
+    // componentDidMount(){
+    //     this.props.toggleAuth()
+    // }
+    // onLogin = (e)=>{
+    //     e.preventDefault()
+    //     const {email, password}= this.state
+    //     this.props.authLogin(email, password)
+
+    // }
+    // componentDidUpdate(){
+    //     const {token} = this.props.auth
+    //     if(token!==null){
+    //         this.props.toggleAuth()
+    //         this.props.history.push('/')
+    //     }
+    // }
+    // render() {
         return (
             <div>
                 
@@ -58,9 +96,9 @@ class Login extends Component {
                 </div>
 
                 <div className="flex">
-                    <Link to="/signUp"><button className="bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-full ">
+                    <button   onClick={() => history.push('/signUp')} className="bg-yellow-400 text-yellow-900 hover:bg-yellow-200 font-bold py-3 px-16 rounded-full ">
                         Sign Up
-                        </button></Link>
+                        </button>
                 </div>
             </div>
 
@@ -68,19 +106,19 @@ class Login extends Component {
             <div className="flex justify-center">
                 
 
-            <form onSubmit={this.onLogin}>
+            <form onSubmit={onLogin}>
                 
             {errMessage!=='' && <div className="pl-3 bg-red-300 text-red-600 mb-10  pt-2 pb-2">{errMessage}</div>}
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl" >
                         Email Adress :
                     </label>
-                    <input onChange={e=>this.setState({email: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="email" placeholder="Enter your email adress" />
+                    <input onChange={(e) => setEmail(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="email" placeholder="Enter your email adress" />
 
                     <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="passowrd">
                         Password :
                     </label>
-                    <input onChange={e=>this.setState({password: e.target.value})} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="password" type="text" placeholder="Enter your password" />
+                    <input onChange={(e) => setPassword(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="password" type="text" placeholder="Enter your password" />
 
                     <a href="forgot.html"><label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="phone number">
                         Forgot password?
@@ -141,12 +179,12 @@ class Login extends Component {
             </div>
         )
     }
-}
+// }
 
-const mapStateToProps = state => ({
-    auth: state.auth
-})
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+  })
 
-const mapDispatchToProps = {toggleAuth, authLogin}
+const mapDispatchToProps = {toggleAuth, authLogin, clearMessage}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
