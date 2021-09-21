@@ -115,12 +115,12 @@ import { useHistory } from 'react-router-dom'
                     </label>
                     <input onChange={(e) => setEmail(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl " id="email" type="email" placeholder="Enter your email adress" />
 
-                    <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="passowrd">
+                    <label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" htmlFor="passowrd">
                         Password :
                     </label>
                     <input onChange={(e) => setPassword(e.target.value)} className="border border-gray-400 rounded-2xl py-2 px-10 text-gray-700 leading-tight focus:outline-none  text-xl pb-3.5" id="password" type="text" placeholder="Enter your password" />
 
-                    <a href="forgot.html"><label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" for="phone number">
+                    <a href="forgot.html"><label className="block text-gray-700 text-sm font-bold mb-3.5 font-bold text-xl mt-7" htmlFor="phone number">
                         Forgot password?
                     </label></a>
 
@@ -160,7 +160,7 @@ import { useHistory } from 'react-router-dom'
             <div className="flex justify-center">
                 <div id="rect2" className="flex justify-between items-center shadow-2xl bg-white h-48 rounded-md px-20 ">
                     <div className="leading-10">Get your member <br/> card now! <br/> 
-                    <span className="text-base font-normal" >Let's see the deals and pick yours!</span></div>
+                    <span className="text-base font-normal" >Let&aposs see the deals and pick yours!</span></div>
 
                     <div><button className=" mt-5 mx-auto text-base font-bold bg-yellow-400 hover:bg-yellow-200 text-yellow-700 font-semibold py-4 px-20 border border-yellow-400 rounded-lg shadow-2xl ">
                         Create Now

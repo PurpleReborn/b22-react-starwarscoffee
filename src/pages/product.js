@@ -169,8 +169,8 @@ function Product(props) {
             {data.map(items => {
             return(
 
-            <Link  className="no-underline" to={`/product/${items.id}`}>
-            <div key={items.id.toString()} className="item1 border-2 border-transparent border-3xl rounded-3xl hover:border-yellow-400">
+            <Link key={items.id.toString()} className="no-underline" to={`/product/${items.id}`}>
+            <div  className="item1 border-2 border-transparent border-3xl rounded-3xl hover:border-yellow-400">
             <div className="w-28 md:w-40 h-32 md:h-52 bg-white rounded-3xl shadow-2xl ">
             <div>
                 <img src={img2} alt="img2" className="w-20 md:w-32 h-20 md:h-32 rounded-full -mt-10 ml-4 absolute" />

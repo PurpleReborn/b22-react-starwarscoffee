@@ -19,16 +19,16 @@ const RightComponent = connect((state) => ({ auth: state.auth }), {authLogout})(
             );
         }
         return (
-            <div id="navbar2" class="flex text-yellow-900 justify-between space-x-7">
+            <div id="navbar2" className="flex text-yellow-900 justify-between space-x-7">
 
               <div>            
             <Link  to ="/login">
-            <button class="bg-yellow-400  hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+            <button className="bg-yellow-400  hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
              Login
             </button></Link>
             </div>  
 
-            <Link to="/signUp"><button class="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
+            <Link to="/signUp"><button className="bg-yellow-400 hover:bg-yellow-200 font-bold py-2 px-6 rounded-full">
                 Sign Up
             </button></Link>
 

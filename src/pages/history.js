@@ -55,9 +55,9 @@ class History extends Component {
                         <div>Delivered</div>
 
                         <div className="absolute pl-24 ">
-                            <label class="inline-flex items-center mt-3">
-                            <input type="checkbox" class="form-checkbox ml-5 -mt-15 h-5 w-5 text-yellow-600" />
-                            <span class="ml-2 text-gray-700"></span>
+                            <label className="inline-flex items-center mt-3">
+                            <input type="checkbox" className="form-checkbox ml-5 -mt-15 h-5 w-5 text-yellow-600" />
+                            <span className="ml-2 text-gray-700"></span>
                             </label>
                         </div>
                     </div>

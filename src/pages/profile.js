@@ -184,17 +184,17 @@ class Profile extends Component {
                 
                     <div className="flex flex-col md:flex-row justify-between ml-8 mr-8">
                         <div className="flex  flex-col w-60 md:w-80">
-                            <label for="email" className="mb-4">Email adress :</label>
+                            <label htmlFor="email" className="mb-4">Email adress :</label>
                             <input value={this.state.email} onChange={(e) => { this.setState({ email: e.target.value }); }} type="email" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                         <div className="flex flex-col w-60 md:w-80">
-                            <label for="email" className="mb-4">Mobile number : </label>
+                            <label htmlFor="email" className="mb-4">Mobile number : </label>
                             <input  value={this.state.number} onChange={(e) => { this.setState({ number: e.target.value }); }} type="text"  className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                     </div>
                    
                         <div className="flex  flex-col w-60 md:w-80    ml-8 pt-6 ">
-                            <label for="email" className="mb-4 ">Delivery adress :</label>
+                            <label htmlFor="email" className="mb-4 ">Delivery adress :</label>
                             <input value={this.state.address} onChange={(e) => { this.setState({ address: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                         </div>
                     
@@ -216,24 +216,24 @@ class Profile extends Component {
                 <div className="flex flex-col md:flex-row">
                 <div className="">
                 <div className="flex  flex-col w-60 md:w-80 ml-8 pt-4">
-                    <label for="email" className="mb-2">Display name :</label>
+                    <label htmlFor="email" className="mb-2">Display name :</label>
                     <input value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
 
                 <div className="flex  flex-col w-60 md:w-80 ml-8 pt-4">
-                    <label for="email" className="mb-2">First name :</label>
+                    <label htmlFor="email" className="mb-2">First name :</label>
                     <input value={this.state.firstName} onChange={(e) => { this.setState({ firstName: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
 
                 <div className="flex  flex-col w-60 md:w-80 ml-8 pt-4">
-                    <label for="email" className="mb-2">Last name :</label>
+                    <label htmlFor="email" className="mb-2">Last name :</label>
                     <input value={this.state.lastName} onChange={(e) => { this.setState({ lastName: e.target.value }); }} type="text" name="email" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
                 </div>
                 </div>
 
                 <div className="md:pl-20 md:pb-0 pb-10">
                     <div className="flex  flex-col w-80 ml-8 pt-8 pb-6">
-                        <label for="email" className="mb-4">DD/MM/YY</label>
+                        <label htmlFor="email" className="mb-4">DD/MM/YY</label>
                         <input type="date" name="email" className=" bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-400 border-black w-52" />
                     </div>
                     <div className="pl-8">

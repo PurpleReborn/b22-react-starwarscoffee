@@ -50,24 +50,24 @@ class Details extends Component {
 
                     </div> 
 
-                    <div class="text-center pt-8 text-xl font-bold">Choose Delivery Methods</div>
-                    <div class="flex justify-between pt-7 md:mx-0 mx-4 md:pl-32 md:pr-32">
-                        <div> <button class="bg-gray-100 w-20 md:w-24 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold focus:bg-yellow-900 focus:text-white">
+                    <div className="text-center pt-8 text-xl font-bold">Choose Delivery Methods</div>
+                    <div className="flex justify-between pt-7 md:mx-0 mx-4 md:pl-32 md:pr-32">
+                        <div> <button className="bg-gray-100 w-20 md:w-24 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold focus:bg-yellow-900 focus:text-white">
                             Dine in</button> 
                         </div>
 
-                        <div> <button class="bg-gray-100 w-36 md:w-36 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold focus:bg-yellow-900 focus:text-white">
+                        <div> <button className="bg-gray-100 w-36 md:w-36 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold focus:bg-yellow-900 focus:text-white">
                             Door Delivery</button> 
                         </div>
 
-                        <div> <button class="bg-gray-100  w-20 md:w-24 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold  focus:bg-yellow-900 focus:text-white">
+                        <div> <button className="bg-gray-100  w-20 md:w-24 h-12 text-gray-500 rounded-xl md:text-base text-sm font-bold  focus:bg-yellow-900 focus:text-white">
                             Pick up</button> 
                         </div>
                         
                     </div>
-                    <div class="flex  flex-row justify-center pt-10 ">
-                        <label for="email" class="mr-4 text-xl">Set time :</label>
-                        <input type="text" name="email" class="  bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-900 border-yellow-900 w-40 md:w-72 "/>
+                    <div className="flex  flex-row justify-center pt-10 ">
+                        <label htmlFor="email" className="mr-4 text-xl">Set time :</label>
+                        <input type="text" name="email" className="  bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-900 border-yellow-900 w-40 md:w-72 "/>
                     </div>
 
                     </div>
