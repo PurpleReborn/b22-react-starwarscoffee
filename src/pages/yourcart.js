@@ -5,12 +5,11 @@ import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { getUser } from '../redux/actions/user'
 import { createTransaction } from '../redux/actions/transaction'
-import Swal from 'sweetalert2';
-
+import Swal from 'sweetalert2'
 
 class Payments extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       item_id: [],
       item_amount: 1,
@@ -18,37 +17,37 @@ class Payments extends Component {
       subTotal: '',
       total: '',
       payment_method: '',
-    };
+    }
   }
 
 
   componentDidMount() {
     if (this.props.carts.items.length > 0) {
-      this.setData();
+      this.setData()
     } else {
       this.setState({
         subTotal: 0,
         total: 0
-      });
+      })
     }
   }
 
   setData = () => {
-    const item_id = [];
+    const item_id = []
     // const item_amount = [];
     // const item_additional_price = [];
-    this.props.carts.items.map((element) => item_id.push(element.id));
+    this.props.carts.items.map((element) => item_id.push(element.id))
     // this.props.carts.items.map((element) => item_amount.push(element.amount));
     this.setState({
       item_id: this.state.item_id.concat(item_id),
       // item_amount: this.state.item_amount.concat(item_amount),
     }, () => {
-      const subTotal = this.props.carts.items.map((element, idx) => element.price * this.state.item_amount[idx]).reduce((acc, curr) => acc + curr);
+      const subTotal = this.props.carts.items.map((element, idx) => element.price * this.state.item_amount[idx]).reduce((acc, curr) => acc + curr)
       this.setState({
         subTotal,
         total: subTotal  + (subTotal * (10 / 100))
-      });
-    });
+      })
+    })
   }
 
   createTransaction = () => {
@@ -62,14 +61,14 @@ class Payments extends Component {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.value) {
-        const { token } = this.props.auth;
+        const { token } = this.props.auth
         const {
           item_id, item_amount, item_additional_price, payment_method
-        } = this.state;
+        } = this.state
         this.setState({
           subTotal: 0,
           total: 0
-        });
+        })
         this.props.createTransaction(item_id, item_amount, item_additional_price, payment_method, token)
           .then(() => {
             Swal.fire({
@@ -78,17 +77,17 @@ class Payments extends Component {
               title: 'Payment Successfully!',
               showConfirmButton: false,
               timer: 1500
-            });
+            })
           }).catch((err) => {
-            console.log(err);
+            console.log(err)
             Swal.fire({
               icon: 'error',
               title: 'error',
               text: 'Payment failed'
-            });
-          });
+            })
+          })
       }
-    });
+    })
   }
 
     render() {
@@ -235,6 +234,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
     getUser,
     createTransaction
-  };
+  }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Payments)

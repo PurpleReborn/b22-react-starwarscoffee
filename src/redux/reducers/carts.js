@@ -1,6 +1,7 @@
 const initialState = {
     items : [],
-    totalItem: 0
+    totalItem: 0,
+    transaction: [],
 }
 
 const carts = (state=initialState, action)=>{
@@ -11,6 +12,11 @@ const carts = (state=initialState, action)=>{
                 items: [...state.items, ...[action.payload]]
             }
         }
+        case 'SET_CREATE_TRANSACTION':
+            return {
+              ...state,
+              transaction: action.payload,
+            }
         default : {
             return {
                 ...state
