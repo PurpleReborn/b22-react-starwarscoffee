@@ -1,3 +1,7 @@
+# Coffee Shop Web App
+
+![Screenshot (250) (1)](https://user-images.githubusercontent.com/79769140/134424976-260bc617-e67d-4def-88c7-fa2a91c6f61d.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
