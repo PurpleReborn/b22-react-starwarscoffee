@@ -173,7 +173,7 @@ function Product(props) {
             <div  className="item1 border-2 border-transparent border-3xl rounded-3xl hover:border-yellow-400">
             <div className="w-28 md:w-40 h-32 md:h-52 bg-white rounded-3xl shadow-2xl ">
             <div>
-                <img src={img2} alt="img2" className="w-20 md:w-32 h-20 md:h-32 rounded-full -mt-10 ml-4 absolute" />
+                <img src={items.picture === null ? img2 : items.picture } alt="img2" className="w-20 md:w-32 h-20 md:h-32 rounded-full -mt-10 ml-4 absolute" />
             </div>
 
             <div className="text-center pt-14 md:pt-24 w-20 mx-auto leading-5 font-black text-black no-underline text-lg md:text-xl ">{items.name}</div>

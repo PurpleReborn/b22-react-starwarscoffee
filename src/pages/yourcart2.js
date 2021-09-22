@@ -137,7 +137,7 @@ class Payments extends Component {
                 <div className ="text-center font-bold text-2xl md:text-4xl my-6 md:my-20">Order Summary</div>
                 {items.length < 1 ? (
                     <h4 className="md:px-16 text-gray-500 text-2xl font-bold text-center">
-                       You don't have any orders
+                       You don&apos;t have any orders
                     </h4>
                 ):(
                   <div className ="flex flex-col mx-11 divide-y-4 space-y-4">
