@@ -29,7 +29,7 @@ export const getHistory = (token) => {
       const {data} = await http(token).get(`${URL}/historyTrx`)
             dispatch({
                 type:'HISTORY_GET',
-                payload: data.message
+                payload: data.results
             })
         } catch(err) {
             dispatch({
@@ -131,3 +131,18 @@ export const getHistory = (token) => {
   //       }
   //     }
   //   }
+
+  export const deleteTrx = (token, id) => async (dispatch) => {
+    try {
+      const { data } = await http(token).delete(`${URL}/deleteTrx`);
+      dispatch({
+        type: 'DELETE_TRANSACTION',
+        payload: data.message,
+      });
+    } catch (err) {
+      dispatch({
+        type: 'DELETE_TRANSACTION_FAILED',
+        payload: err.response.data.message,
+      });
+    }
+  };

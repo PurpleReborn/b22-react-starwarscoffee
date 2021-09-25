@@ -32,6 +32,18 @@ const transaction = (state=initialState, action)=> {
           errMsg: action.payload,
         };
       }
+      case 'DELETE_TRANSACTION': {
+        return {
+          ...state,
+          msg: action.payload,
+        };
+      }
+      case 'DELETE_TRANSACTION_FAILED': {
+        return {
+          ...state,
+          errMsg: action.payload,
+        };
+      }
        
         default: {
             return {
