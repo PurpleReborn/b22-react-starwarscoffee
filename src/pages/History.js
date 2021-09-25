@@ -4,9 +4,8 @@ import React, { Component } from 'react'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 
-import { getHistory,deleteTrx } from '../redux/actions/transaction'
+import { getHistory } from '../redux/actions/transaction'
 import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2';
 
 
 
@@ -18,40 +17,9 @@ class History extends Component {
     if (token !== null) {
       this.props.getHistory(token)
     } else {
-      console.log('You Cannot Access Site')
+      console.log('cannot access')
     }
   }
-
-        onDelete = () => {
-        const {token} = this.props.auth       
-        Swal.fire({
-          title: 'Delete this message ?',
-          text: "Delete permanently",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#FFB600',
-          cancelButtonColor: '#784212',
-          confirmButtonText: 'Yes, delete',
-          iconColor: '#F1C40F',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.props.deleteTrx(token).then(() => {
-              this.getHistory(token)
-            })
-            
-            Swal.fire(
-              {
-                title: 'Deleted',
-                text: "Your history has been deleted",
-                icon: 'success',
-                iconColor: '#784212',
-                confirmButtonColor: '#784212',
-              }
-            )
-          }
-        })
-        
-      }
 
     render() {
         const {data} = this.props.transaction
@@ -69,8 +37,7 @@ class History extends Component {
     </div>
 
     <div className="flex flwx-row justify-between kanan">
-    {/* <Link to="/delete"><div className="font-bold text-white ">Delete All</div></Link> */}
-    <button onClick={() => this.onDelete}><div className="font-bold text-white ">Delete All</div></button>
+    <Link to="/delete"><div className="font-bold text-white ">Delete All</div></Link>
     <div className="font-bold text-white">Select All</div>
     </div>
 
@@ -128,6 +95,7 @@ class History extends Component {
 }
 
 const mapStateToProps = state => ({
+    items: state.items,
     transaction: state.transaction,
     auth : state.auth
 })

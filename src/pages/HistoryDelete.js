@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 
-import { getHistory } from '../redux/actions/transaction'
+import { getHistory,deleteTrx } from '../redux/actions/transaction'
 import { Link } from 'react-router-dom'
 
 
@@ -12,8 +12,26 @@ import { Link } from 'react-router-dom'
 class HistoryDelete extends Component {
 
     componentDidMount() {
-        this.props.getHistory()
+      const { token } = this.props.auth
+        this.props.getHistory(token)
     }
+
+    onDelete = () => {
+      const {token} = this.props.auth
+          this.props.deleteTrx(token).then(() => {
+            Swal.fire({
+              title: 'Deleted',
+              text: "Your message has been deleted",
+              icon: 'success',
+              iconColor: '#784212',
+              confirmButtonColor: '#784212',
+            })
+            this.props.history.push('/history'); 
+          })
+          
+
+        }
+ 
 
     render() {
         const {data} = this.props.items
@@ -76,8 +94,8 @@ class HistoryDelete extends Component {
                 
                 <Link to="/history"><button className="bg-white border-yellow-900 border-2 text-yellow-900 rounded-2xl btnDelete font-bold hover:border-yellow-400 hover:text-yellow-400">Cancel</button></Link>
 
-                <Link to="/history">
-                <button className="bg-yellow-900 text-white rounded-2xl btnDelete font-bold hover:bg-yellow-400 ">Delete</button></Link>
+               
+                <button onClick={() => this.onDelete}  className="bg-yellow-900 text-white rounded-2xl btnDelete font-bold hover:bg-yellow-400 ">Delete</button>
             </div>
         </div>
 
@@ -90,7 +108,9 @@ class HistoryDelete extends Component {
 }
 
 const mapStateToProps = state => ({
-    items: state.items
+    items: state.items,
+    transaction: state.transaction,
+    auth : state.auth
 })
 
 const mapDispatchToProps = {getHistory}
