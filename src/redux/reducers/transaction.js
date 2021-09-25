@@ -12,8 +12,8 @@ const transaction = (state=initialState, action)=> {
         case 'HISTORY_GET': {
             return {
             ...state,
-            data: action.payload
-            // pageInfo:action.payload.pageInfo
+            data: action.payload,
+            pageInfo:action.payload.pageInfo
         }
     }        case 'HISTORY_GET_FAILED': {
         return {
@@ -42,3 +42,4 @@ const transaction = (state=initialState, action)=> {
 }
 
 export default transaction
+

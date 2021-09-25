@@ -12,10 +12,14 @@ import { Link } from 'react-router-dom'
 
 class History extends Component {
 
-    componentDidMount() {
-        const { token } = this.props.auth;
-        this.props.getHistory(token)
+  componentDidMount () {
+    const { token } = this.props.auth
+    if (token !== null) {
+      this.props.getHistory(token)
+    } else {
+      console.log('You Cannot Access Site')
     }
+  }
 
     render() {
         const {data} = this.props.transaction
@@ -44,13 +48,13 @@ class History extends Component {
         {data.map(items => {
         return(
 
-            <div className=" bg-white rounded-2xl " key={items.id}>
+            <div key={items.id} className=" bg-white rounded-2xl " >
                 
                 <div className="flex flex-row space-x-5  mr-10 ml-6 mt-6">
                     
-                    <div className="w-16 h-16 -mt-5 bg-yellow-900 rounded-full pr-3"></div>
+                    <div  className="w-16 h-16 -mt-5 bg-yellow-900 rounded-full pr-3"></div>
                     <div className="flex flex-col">
-                        <div className="font-bold text-bg-gray-900 ">{items.code}</div>
+                        <div  className="font-bold text-bg-gray-900 ">{items.code}</div>
                         <div>IDR.{items.total}</div>
                         <div>Delivered</div>
 
