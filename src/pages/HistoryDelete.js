@@ -34,7 +34,7 @@ class HistoryDelete extends Component {
  
 
     render() {
-        const {data} = this.props.items
+        const {data} = this.props.transaction
         return (
 
 
