@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 class History extends Component {
 
     componentDidMount() {
-        const {token} = this.props.auth
+        const { token } = this.props.auth;
         this.props.getHistory(token)
     }
 
