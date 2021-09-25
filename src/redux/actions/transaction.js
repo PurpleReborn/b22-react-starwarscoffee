@@ -28,11 +28,13 @@ export const getHistory= (token)=> {
             try{
                 const {data} = await http(token).get(`${URL}/historyTrx`)
                 dispatch({
+
                     type:'HISTORY_GET',
                     payload:data.results
                         
                     
                 })
+                console.log(token)
             }catch(err){
                 dispatch({
                     type: 'HISTORY_GET_FAILED',
