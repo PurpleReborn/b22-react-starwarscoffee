@@ -29,7 +29,7 @@ export const updateUser = (token, Data) => async (dispatch) => {
     form.append('firstName', Data.firstName);
     form.append('lastName', Data.lastName);
     try {
-      const { data } = await http(token).put(`${URL}/updateProfile`, form);
+      const { data } = await http(token).patch(`${URL}/updateProfile`, form);
       dispatch({
         type: 'USER_UPDATE',
         payload: data.message,
