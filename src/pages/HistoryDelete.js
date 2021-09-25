@@ -113,6 +113,6 @@ const mapStateToProps = state => ({
     auth : state.auth
 })
 
-const mapDispatchToProps = {getHistory}
+const mapDispatchToProps = {getHistory,deleteTrx}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryDelete)
