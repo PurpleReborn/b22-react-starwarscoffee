@@ -29,7 +29,7 @@ export const getHistory = (token) => {
       const {data} = await http(token).get(`${URL}/historyTrx`)
             dispatch({
                 type:'HISTORY_GET',
-                payload: data.results
+                payload: data.message
             })
         } catch(err) {
             dispatch({

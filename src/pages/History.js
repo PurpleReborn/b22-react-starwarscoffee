@@ -45,7 +45,8 @@ class History extends Component {
 
 
         <div className="grid grid-cols-4  justify-between gap-4 pl-32 pr-32">
-        {data.map(items => {
+          <div>{data.message}</div>
+        {/* {data.map(items => {
         return(
 
             <div key={items.id} className=" bg-white rounded-2xl " >
@@ -71,7 +72,7 @@ class History extends Component {
 
         )
 
-        })}
+        })} */}
 
 
 
