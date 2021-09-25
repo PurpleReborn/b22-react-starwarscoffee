@@ -57,8 +57,8 @@ class HistoryDelete extends Component {
                     
                     <div classNameName="w-16 h-16 bg-yellow-900 rounded-full pr-3"></div>
                     <div classNameName="flex flex-col">
-                        <div classNameName="font-bold text-xl">{items.name}</div>
-                        <div>IDR.{items.price.toLocaleString('en')}</div>
+                        <div classNameName="font-bold text-xl">{items.code}</div>
+                        <div>IDR.{items.total}</div>
                         <div>Delivered</div>
 
                         <div classNameName="absolute pl-24 pt-10">
