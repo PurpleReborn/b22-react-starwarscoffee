@@ -86,23 +86,23 @@ class History extends Component {
     <div className="flex flex-col space-y-7">
 
 
-        <div className="grid grid-cols-4  justify-between gap-4 pl-32 pr-32">
+        <div className="grid md:grid-cols-4 grid-cols-2  justify-between gap-2 md:gap-4 md:px-32 px-2">
         {data.map(items => {
         return(
 
             <div key={items.id} className=" bg-white rounded-2xl " >
                 
-                <div className="flex flex-row space-x-5  mr-10 ml-6 mt-6">
+                <div className="flex flex-col md:flex-row space-x-2 md:space-x-5  mx-10 my-4 md:mr-10 md:ml-6 mt-6">
                     
-                    <div  className="w-16 h-16 -mt-5 bg-yellow-900 rounded-full pr-3"></div>
+                    <div  className="md:w-16 md:h-16 w-10 h-10 -mt-5 bg-yellow-900 rounded-full  md:pr-3"></div>
                     <div className="flex flex-col">
                         <div  className="font-bold text-bg-gray-900 ">{items.code}</div>
                         <div>IDR.{items.total}</div>
                         <div>Delivered</div>
 
-                        <div className="absolute pl-24 ">
-                            <label className="inline-flex items-center mt-3">
-                            <input type="checkbox" className="form-checkbox ml-5 -mt-15 h-5 w-5 text-yellow-600" />
+                        <div className="absolute md:pl-24 pl-20">
+                            <label className="inline-flex items-center mt-10 md:mt-3">
+                            <input type="checkbox" className="form-checkbox md:ml-5 -mt-15 h-5 w-5 text-yellow-600" />
                             <span className="ml-2 text-gray-700"></span>
                             </label>
                         </div>

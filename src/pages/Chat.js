@@ -216,7 +216,7 @@ class Chat extends Component {
 
                     { this.state.search !== '' ? (
             
-            <div className="bg-search flex flex-col flex-initial absolute mt-20 w-96 rounded-2xl md:rounded-b-2xl overflow-y-scroll overscroll-none h-60">
+            <div className="bg-search flex flex-col flex-initial absolute md:mt-20 md:px-0 px-12 md:w-96 rounded-2xl md:rounded-b-2xl overflow-y-scroll overscroll-none h-60">
               {this.state.searchData.map(dataSearch => {
               return dataSearch.name !== this.props.user.data.name  ?
               <div key={dataSearch.id} onClick={() => this.onRedirect(dataSearch)} className="flex flex-row cursor-pointer pt-8 p-3">
