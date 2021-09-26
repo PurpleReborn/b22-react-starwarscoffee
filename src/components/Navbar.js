@@ -9,6 +9,7 @@ import { authLogout } from '../redux/actions/auth'
 import { getUser} from '../redux/actions/user'
 
 import {connect} from 'react-redux'
+const {REACT_APP_BACKEND_URL: URL} = process.env
 
 const RightComponent = connect((state) => ({ auth: state.auth }), {authLogout})(({ auth, authLogout: logout }) => {
         if( auth.token !== null ){
@@ -79,7 +80,7 @@ function Navbar  ({
                 
                     <img src={vector} alt="search" className="w-7 h-7" />
                     <Link to="/chat"><img src={chat} alt="chat" className="w-7 h-7" /></Link> 
-                    <Link to="/profile"><img alt="" src={user.data.picture === null ? ujung : `http://localhost:8080${user.data.picture}` } className="w-7 h-7 rounded-full" /></Link>
+                    <Link to="/profile"><img alt="" src={user.data.picture === null ? ujung : `${URL}${user.data.picture}` } className="w-7 h-7 rounded-full" /></Link>
 
                         <RightComponent />
 
