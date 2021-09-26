@@ -17,20 +17,40 @@ class HistoryDelete extends Component {
     }
 
     onDelete = () => {
+      console.log('delete')
       const {token} = this.props.auth
+     
+      Swal.fire({
+        title: 'Delete this message ?',
+        text: "Delete permanently",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFB600',
+        cancelButtonColor: '#784212',
+        confirmButtonText: 'Yes, delete',
+        iconColor: '#F1C40F',
+      }).then((result) => {
+        if (result.isConfirmed) {
           this.props.deleteTrx(token).then(() => {
-            Swal.fire({
+            this.props.getHistory(token)
+          })
+          
+          Swal.fire(
+            // 'Deleted!',
+            // 'Your message has been deleted.',
+            // 'success'
+            {
               title: 'Deleted',
               text: "Your message has been deleted",
               icon: 'success',
               iconColor: '#784212',
               confirmButtonColor: '#784212',
-            })
-            this.props.history.push('/history'); 
-          })
-          
-
+            }
+          )
         }
+      })
+      
+    }
  
 
     render() {
@@ -95,7 +115,7 @@ class HistoryDelete extends Component {
                 <Link to="/history"><button className="bg-white border-yellow-900 border-2 text-yellow-900 rounded-2xl btnDelete font-bold hover:border-yellow-400 hover:text-yellow-400">Cancel</button></Link>
 
                
-                <button onClick={() => this.onDelete}  className="bg-yellow-900 text-white rounded-2xl btnDelete font-bold hover:bg-yellow-400 ">Delete</button>
+                <button onClick={this.onDelete}  className="bg-yellow-900 text-white rounded-2xl btnDelete font-bold hover:bg-yellow-400 ">Delete</button>
             </div>
         </div>
 

@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
-
-import { getHistory } from '../redux/actions/transaction'
+import Swal from 'sweetalert2';
+import { getHistory,deleteTrx  } from '../redux/actions/transaction'
 import { Link } from 'react-router-dom'
 
 
@@ -19,6 +19,46 @@ class History extends Component {
     } else {
       console.log('cannot access')
     }
+  }
+
+  // componentDidUpdate () {
+  //   const { token } = this.props.auth
+  //   this.props.getHistory(token)
+  // }
+
+  onDelete = () => {
+    console.log('delete')
+    const {token} = this.props.auth
+    Swal.fire({
+      title: 'Delete this message ?',
+      text: "Delete permanently",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FFB600',
+      cancelButtonColor: '#784212',
+      confirmButtonText: 'Yes, delete',
+      iconColor: '#F1C40F',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.props.deleteTrx(token).then(() => {
+          this.props.getHistory(token)
+        })
+        
+        Swal.fire(
+          // 'Deleted!',
+          // 'Your message has been deleted.',
+          // 'success'
+          {
+            title: 'Deleted',
+            text: "Your message has been deleted",
+            icon: 'success',
+            iconColor: '#784212',
+            confirmButtonColor: '#784212',
+          }
+        )
+      }
+    })
+    
   }
 
     render() {
@@ -37,7 +77,9 @@ class History extends Component {
     </div>
 
     <div className="flex flwx-row justify-between kanan">
-    <Link to="/delete"><div className="font-bold text-white ">Delete All</div></Link>
+    {/* <Link to="/delete"> */}
+      <button onClick={this.onDelete}  className="font-bold text-white ">Delete All</button>
+      {/* </Link> */}
     <div className="font-bold text-white">Select All</div>
     </div>
 
@@ -100,6 +142,6 @@ const mapStateToProps = state => ({
     auth : state.auth
 })
 
-const mapDispatchToProps = {getHistory}
+const mapDispatchToProps = {getHistory,deleteTrx }
 
 export default connect(mapStateToProps, mapDispatchToProps)(History)
