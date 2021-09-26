@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Swal from 'sweetalert2';
 import { getUser,updateUser } from '../redux/actions/user'
 // const { APP_UPLOAD_ROUTE } = process.env
+const {REACT_APP_BACKEND_URL: URL} = process.env
 
 
 class Profile extends Component {
@@ -149,7 +150,7 @@ class Profile extends Component {
             <div className="flex flex-col bg-white px-10 md:h-96 h-48 rounded-t-xl text-center space-y-6 ">
                 
                 <div className="relative pt-2 mb:pt-12">
-                <img alt="profile pict" src={this.state.picture === null ? ujung : `http://localhost:8080${this.state.picture}` } className="w-20 h-20 mr-auto ml-auto rounded-full" />
+                <img alt="profile pict" src={this.state.picture === null ? ujung : `${URL}${this.state.picture}` } className="w-20 h-20 mr-auto ml-auto rounded-full" />
 
                 <input name="image" onChange={e=>this.setState({picture:e.target.files})} type="file"  accept="image/*" className="w-6 h-6 rounded-full bg-yellow-900 absolute ml-10 -mt-6 text-center hover:bg-yellow-400 " />
                 
